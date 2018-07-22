@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>LOGIN</title>
+        <link href=".css/login.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript">
+        function loginClick() {
+            var name=document.login.username.value;
+            var pwd=document.login.password.value;
+            var code=document.login.code.value;
+            if(name==null||name.length==0){
+                alert("用户名不能为空！");
+                return;
+            }else if(name.length<3){
+                alert("用户名不能低于三位！")
+                return;
+            }
+            if(pwd==null||pwd.length==0){
+                alert("密码不能为空！");
+                return;
+            }else if(pwd.length<6){
+                alert("密码长度不能低于6位！")
+                return;
+            }
+            if(code=null||code.length==0){
+                alert("验证码不能为空！");
+                return;
+            }
+            document.login.submit();
+        }
+        function createCode(){
+            var seed = new Array(  
+                        'abcdefghijklmnopqrstuvwxyz',  
+                        'ABCDEFGHIJKLMNOPQRSTUVWXYZ',  
+                        '0123456789'  
+                );               //创建需要的数据数组  
+            var idx,i;  
+            var result = '';   //返回的结果变量  
+            for (i=0; i<6; i++) //根据指定的长度  
+            {  
+                idx = Math.floor(Math.random()*3); //获得随机数据的整数部分-获取一个随机整数  
+                result += seed[idx].substr(Math.floor(Math.random()*(seed[idx].length)), 1);//根据随机数获取数据中一个值  
+            }  
+            return result; //返回随机结果 
+        }
+        function test() {  
+            var inputRandom=document.getElementById("inputRandom").value;  
+            var autoRandom=document.getElementById("autoRandom").innerHTML;  
+            if(inputRandom==autoRandom) {  
+                alert("通过验证");  
+            } else {  
+                alert("没有通过验证");  
+            }  
+            return false;
+        }
+        </script>
+        <style type="text/css">
+            .divForm{
+            position: absolute;/*绝对定位*/
+            width: 300px;
+            height: 100px;
+            text-align: center;/*(让div中的内容居中)*/
+            /*left: 25%;*/
+            }  
+            body{
+                background-image:url('3.jpg');
+                background-repeat:no-repeat;
+                background-size:100% 100%; 
+                background-attachment:fixed;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="divForm">
+            <table class="login_tb1" align="center" width="1200" height="580">
+                <tr align="center" valign="middle">
+                    <td align="center" valign="middle">
+                        <td height=100%>
+                            <table class="login_tb2" cellSpacing=0 cellPadding=0 boder=0 align="center">
+                                <tr valign="middle">
+                                    <td class="login_td1" colSpan=2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="login_td2">
+                                        <form action="https://v.qq.com/x/cover/eb8lyzam4fnynwn.html" name="login" method="post">
+                                            <table>
+                                                <tr>
+                                                    <td width="66" height="20" class="login_td">登录名：</td>
+                                                    <td width="115" height="20" class="login_td">
+                                                        <input class="login_input" type="text" name="username">
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td item-height="20" class="login_td">密 码：</td>
+                                                    <td item-height="20" class="login_td">
+                                                        <input type="password" name="password" class="login_input">
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td item-height="20" class="login_td">验证码：</td>
+                                                    <td item-height="20" class="login_td">
+                                                        <input type="text" name="code" class="login_input">
+                                                    <td>
+                                                        <label id="autoRandom" value="" ></label>
+                                                        <INPUT TYPE="button" VALUE="获取验证码" ONCLICK="autoRandom.innerHTML=createCode()">
+                                                    </td>  
+                                                    <!-- <td>
+                                                        <input type="button" value="验证" onclick="test()">
+                                                    </td>  
+                                                    </td> -->
+                                                </tr>
+                                                <script type="text/javascript">  
+                                                    window.onload()=autoRandom.innerHTML=createCode(sel.value);  
+                                                </script>    
+                                                <tr>
+                                                    <td height="20" colspan="2" align="center">
+                                                        <input type="reset" value="重置" class="login_button"/>   
+                                                        <input type="button" value="登录" class="login_button" onClick="loginClick()"/>  
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
